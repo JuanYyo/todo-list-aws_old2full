@@ -48,7 +48,8 @@ pipeline {
                             echo 'Initiating Integration Tests'
                             . /opt/venv/bin/activate
                             export PYTHONPATH=$WORKSPACE
-                            pytest -s test/integration/todoApiTest.py -m readonly
+                            pytest -s test/integration/todoApiTest.py -m readonly --junitxml=result/test_result.xml
+                            junit 'result/test_result.xml'
                         '''
                     }
                 }
